@@ -1,0 +1,18 @@
+pkgbase = st-xresources
+	pkgdesc = Simple terminal (ST) with Xresources
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://st.suckless.org/
+	arch = x86_64
+	license = MIT
+	depends = libxext
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = http://dl.suckless.org/st/st-0.8.1.tar.gz
+	source = https://st.suckless.org/patches/xresources/st-xresources-20180309-c5ba9c0.diff
+	md5sums = 92135aecdba29300bb2e274a55f5b71e
+	md5sums = 6c1d71ee8f8abfc3976536a17a376d20
+
+pkgname = st-Xresources
+
