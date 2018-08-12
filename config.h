@@ -14,25 +14,25 @@ static Parameter defconfig[ParameterLast] = {
 	SETB(DiskCache,          1),
 	SETB(DNSPrefetch,        1),
 	SETI(FontSize,           18),
-	SETB(FrameFlattening,    0),
+	SETB(FrameFlattening,    1),
 	SETB(Geolocation,        0),
 	SETB(HideBackground,     0),
-	SETB(Inspector,          0),
+	SETB(Inspector,          1),
 	SETB(JavaScript,         1),
 	SETB(KioskMode,          0),
 	SETB(LoadImages,         1),
-	SETB(MediaManualPlay,    0),
+	SETB(MediaManualPlay,    1),
 	SETB(Plugins,            1),
 	SETV(PreferredLanguages, ((char *[]){ NULL })),
 	SETB(RunInFullscreen,    0),
-	SETB(ScrollBars,         0),
+	SETB(ScrollBars,         1),
 	SETB(ShowIndicators,     1),
 	SETB(SiteQuirks,         1),
-	SETB(SpellChecking,      0),
+	SETB(SpellChecking,      1),
 	SETV(SpellLanguages,     ((char *[]){ "en_US", NULL })),
 	SETB(StrictSSL,          1),
 	SETB(Style,              1),
-	SETF(ZoomLevel,          1.3),
+	SETF(ZoomLevel,          1.25),
 };
 
 static UriParameters uriparams[] = {
@@ -114,19 +114,18 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_r,      reload,     { .b = 1 } },
 	{ MODKEY,                GDK_KEY_r,      reload,     { .b = 0 } },
 
-	{ MODKEY,                GDK_KEY_l,      navigate,   { .i = +1 } },
-	{ MODKEY,                GDK_KEY_h,      navigate,   { .i = -1 } },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_l,      navigate,   { .i = +1 } },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_h,      navigate,   { .i = -1 } },
 
 	/* Currently we have to use scrolling steps that WebKit2GTK+ gives us
 	 * d: step down, u: step up, r: step right, l:step left
 	 * D: page down, U: page up */
 	{ MODKEY,                GDK_KEY_j,      scroll,     { .i = 'd' } },
 	{ MODKEY,                GDK_KEY_k,      scroll,     { .i = 'u' } },
-	{ MODKEY,                GDK_KEY_b,      scroll,     { .i = 'U' } },
-	{ MODKEY,                GDK_KEY_space,  scroll,     { .i = 'D' } },
-	{ MODKEY,                GDK_KEY_i,      scroll,     { .i = 'r' } },
-	{ MODKEY,                GDK_KEY_u,      scroll,     { .i = 'l' } },
-
+	{ MODKEY,                GDK_KEY_u,      scroll,     { .i = 'U' } },
+	{ MODKEY,                GDK_KEY_d,      scroll,     { .i = 'D' } },
+	{ MODKEY,                GDK_KEY_l,      scroll,     { .i = 'r' } },
+	{ MODKEY,                GDK_KEY_h,      scroll,     { .i = 'l' } },
 
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_j,      zoom,       { .i = -1 } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_k,      zoom,       { .i = +1 } },
@@ -144,7 +143,7 @@ static Key keys[] = {
 
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_a,      togglecookiepolicy, { 0 } },
 	{ 0,                     GDK_KEY_F11,    togglefullscreen, { 0 } },
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_o,      toggleinspector, { 0 } },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_w,      toggleinspector, { 0 } },
 
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_c,      toggle,     { .i = CaretBrowsing } },
   { MODKEY|GDK_SHIFT_MASK, GDK_KEY_f,      toggle,     { .i = FrameFlattening } },

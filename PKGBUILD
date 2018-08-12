@@ -21,6 +21,7 @@ source=(
   "https://surf.suckless.org/patches/spacesearch/surf-spacesearch-20170408-b814567.diff"
   "config.h"
   "surf.desktop"
+  "script.js"
 )
 
 md5sums=('SKIP')
@@ -46,6 +47,7 @@ build() {
 package() {
   cd $srcdir/$basepkgname-$pkgver
   make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 $srcdir/script.js "$HOME/.surf/script.js"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 -D $srcdir/surf.desktop $pkgdir/usr/share/xsessions/surf.desktop
 }
