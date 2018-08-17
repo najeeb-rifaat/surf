@@ -13,7 +13,13 @@ optdepends=('dmenu: url bar and search'
             'ca-certificates: SSL verification'
             'st: default terminal for the download handler'
             'curl: default download handler'
-            'mpv: default video player')
+            'mpv: default video player'
+            'gst-libav: looks like an av library'
+            'gst-plugins-base: base gstreamer plugins'
+            'gst-plugins-good: not sure, but i added it'
+            'gst-plugins-bad: not sure, but i added it'
+            'gst-plugins-ugly: not sure, but i added it'
+)
 provides=("$pkgbasename")
 conflicts=("$pkgbasename")
 source=(
