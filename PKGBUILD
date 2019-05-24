@@ -25,6 +25,8 @@ conflicts=("$pkgbasename")
 source=(
   "https://dl.suckless.org/surf/$basepkgname-$pkgver.tar.gz"
   "https://surf.suckless.org/patches/spacesearch/surf-spacesearch-20170408-b814567.diff"
+  "https://surf.suckless.org/patches/web-search/surf-websearch-20190510-d068a38.diff"
+  "https://surf.suckless.org/patches/homepage/surf-2.0-homepage.diff"
   "config.h"
   "surf.desktop"
   "script.js"
@@ -40,7 +42,7 @@ prepare() {
           cp "$srcdir/$file" .
       elif [[ "$file" == *.diff || "$file" == *.patch ]]; then
           # add all patches present in source array
-          patch -Np1 < "$srcdir/$(basename ${file})"
+          patch -Np1 -F3 --ignore-whitespace < "$srcdir/$(basename ${file})"
       fi
    done
 }

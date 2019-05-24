@@ -1,3 +1,5 @@
+#define HOMEPAGE "https://duckduckgo.com/"
+
 /* modifier 0 means no modifier */
 static int surfuseragent    = 0;  /* Append Surf version to default WebKit user agent */
 static char *fulluseragent  = ""; /* Or override the whole user agent string */
@@ -23,7 +25,7 @@ static Parameter defconfig[ParameterLast] = {
 	SETB(LoadImages,         1),
 	SETB(MediaManualPlay,    1),
 	SETB(Plugins,            1),
-	SETV(PreferredLanguages, ((char *[]){ NULL })),
+	SETV(PreferredLanguages, ((char *[]){ "en_US", NULL })),
 	SETB(RunInFullscreen,    0),
 	SETB(ScrollBars,         1),
 	SETB(ShowIndicators,     1),
@@ -32,7 +34,7 @@ static Parameter defconfig[ParameterLast] = {
 	SETV(SpellLanguages,     ((char *[]){ "en_US", NULL })),
 	SETB(StrictSSL,          1),
 	SETB(Style,              1),
-	SETF(ZoomLevel,          1.25),
+	SETF(ZoomLevel,          1.30),
 };
 
 static UriParameters uriparams[] = {
@@ -49,7 +51,7 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
         .v = (const char *[]){ "/bin/sh", "-c", \
              "prop=\"`xprop -id $2 $0 " \
              "| sed \"s/^$0(STRING) = \\(\\\\\"\\?\\)\\(.*\\)\\1$/\\2/\" " \
-             "| xargs -0 printf %b | dmenu`\" &&" \
+             "| xargs -0 printf %b | dmenu -p \"Surf: \" -l 3 -fn \"SF Mono:style=Regular:size=22:antialsias=true\" `\" &&" \
              "xprop -id $2 -f $1 8s -set $1 \"$prop\"", \
              p, q, winid, NULL \
         } \
@@ -93,7 +95,8 @@ static SiteStyle styles[] = {
 };
 
 //Search engine query
-static char *searchengine   = "https://google.com/search?q=";
+static char *searchengine   = "https://duckduckgo.com/?q=";
+static char *searchurl   = "https://duckduckgo.com/?q=";
 
 #define MODKEY GDK_CONTROL_MASK
 
@@ -140,6 +143,7 @@ static Key keys[] = {
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_n,      find,       { .i = -1 } },
 
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_p,      print,      { 0 } },
+	{ MODKEY,                GDK_KEY_s,      search,      { 0 } },
 
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_a,      togglecookiepolicy, { 0 } },
 	{ 0,                     GDK_KEY_F11,    togglefullscreen, { 0 } },
