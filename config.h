@@ -2,7 +2,7 @@
 
 /* modifier 0 means no modifier */
 static int surfuseragent    = 0;  /* Append Surf version to default WebKit user agent */
-static char *fulluseragent  = ""; /* Or override the whole user agent string */
+static char *fulluseragent  = "Your mom"; /* Or override the whole user agent string */
 static char *scriptfile     = "~/.surf/script.js";
 static char *styledir       = "~/.surf/styles/";
 static char *cachedir       = "~/.surf/cache/";
@@ -16,25 +16,25 @@ static Parameter defconfig[ParameterLast] = {
 	SETB(DiskCache,          1),
 	SETB(DNSPrefetch,        1),
 	SETI(FontSize,           18),
-	SETB(FrameFlattening,    1),
+	SETB(FrameFlattening,    0),
 	SETB(Geolocation,        0),
 	SETB(HideBackground,     0),
 	SETB(Inspector,          1),
 	SETB(JavaScript,         1),
 	SETB(KioskMode,          0),
 	SETB(LoadImages,         1),
-	SETB(MediaManualPlay,    1),
+	SETB(MediaManualPlay,    0),
 	SETB(Plugins,            1),
 	SETV(PreferredLanguages, ((char *[]){ "en_US", NULL })),
 	SETB(RunInFullscreen,    0),
 	SETB(ScrollBars,         1),
 	SETB(ShowIndicators,     1),
-	SETB(SiteQuirks,         1),
+	SETB(SiteQuirks,         0),
 	SETB(SpellChecking,      1),
 	SETV(SpellLanguages,     ((char *[]){ "en_US", NULL })),
 	SETB(StrictSSL,          1),
 	SETB(Style,              1),
-	SETF(ZoomLevel,          1.30),
+	SETF(ZoomLevel,          1.20),
 };
 
 static UriParameters uriparams[] = {
@@ -96,7 +96,7 @@ static SiteStyle styles[] = {
 
 //Search engine query
 static char *searchengine   = "https://duckduckgo.com/?q=";
-static char *searchurl   = "https://duckduckgo.com/?q=";
+static char *searchurl      = "https://duckduckgo.com/?q=";
 
 #define MODKEY GDK_CONTROL_MASK
 
@@ -149,6 +149,7 @@ static Key keys[] = {
 	{ 0,                     GDK_KEY_F11,    togglefullscreen, { 0 } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_w,      toggleinspector, { 0 } },
 
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_u,      toggle,     { .i = StrictSSL } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_c,      toggle,     { .i = CaretBrowsing } },
   { MODKEY|GDK_SHIFT_MASK, GDK_KEY_f,      toggle,     { .i = FrameFlattening } },
 	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_g,      toggle,     { .i = Geolocation } },

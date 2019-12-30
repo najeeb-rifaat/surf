@@ -20,8 +20,8 @@ optdepends=('dmenu: url bar and search'
             'gst-plugins-bad: not sure, but i added it'
             'gst-plugins-ugly: not sure, but i added it'
 )
-provides=("$pkgbasename")
-conflicts=("$pkgbasename")
+provides=("${pkgname}")
+conflicts=("${basepkgname}")
 source=(
   "https://dl.suckless.org/surf/$basepkgname-$pkgver.tar.gz"
   "https://surf.suckless.org/patches/spacesearch/surf-spacesearch-20170408-b814567.diff"
